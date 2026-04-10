@@ -497,12 +497,13 @@ def build_accuracy_gauge(issues, raw_df):
         + issues.get("price_format_errors", 0)
         + issues.get("invalid_discounts", 0)
     )
-    null_cells = issues.get("total_null_cells", 0)
-    
     if raw_df is not None and not raw_df.empty:
-        total_cells = len(raw_df) * len(raw_df.columns)
-        error_rate = (total_issues + null_cells) / total_cells
-        accuracy = max(0.0, 100.0 - (error_rate * 100.0))
+        total_rows = len(raw_df)
+        discarded_rows = issues.get("duplicate_order_ids", 0)
+        # Proper mathematical Accuracy Yield: Percentage of valid retained rows
+        # Since our pipeline surgically nulls bad cells without destroying rows, 
+        # the only completely lost rows are full duplicates.
+        accuracy = ((total_rows - discarded_rows) / total_rows) * 100.0
     else:
         accuracy = 100.0
 
