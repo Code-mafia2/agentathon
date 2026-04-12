@@ -1,8 +1,4 @@
-<p align="center">
-  <img src="assets/banner.png" alt="Agentathon Banner" width="100%">
-</p>
-
-<h1 align="center">🚀 Agentathon: RetailIQ Intelligence</h1>
+<h1 align="center">Agentathon: RetailIQ Intelligence</h1>
 
 <p align="center">
   <strong>The Future of Autonomous Retail Data Intelligence</strong>
@@ -18,7 +14,7 @@
 
 ---
 
-## 🌟 Overview
+## Overview
 
 **RetailIQ Agent** is a state-of-the-art AI-powered automated data intelligence system. Built for the modern e-commerce landscape, it processes, cleans, and extracts deep business insights from raw, noisy order datasets. 
 
@@ -26,20 +22,20 @@ Operating as an autonomous agent orchestrated by **LangGraph**, the system manag
 
 ---
 
-## ✨ Core Features
+## Core Features
 
 | Feature | Description |
 | :--- | :--- |
-| 🛡️ **Autonomous Validation** | Real-time identification of critical data integrity issues. |
-| 🧹 **Intelligent Cleaning** | Automated handling of missing values, duplicates, and currency standardization. |
-| 📊 **Advanced Analytics** | Deep-dive metrics including seasonal trends and customer LTV distribution. |
-| 🛠️ **Feature Engineering** | Dynamic derivation of high-value metrics for business intelligence. |
-| 🔄 **Self-Audit Loop** | Integrated verification nodes with automatic fallback repair mechanisms. |
-| 💡 **AI Insight Engine** | Generates strategic business recommendations using Groq-powered LLMs. |
+| **Autonomous Validation** | Real-time identification of critical data integrity issues. |
+| **Intelligent Cleaning** | Automated handling of missing values, duplicates, and currency standardization. |
+| **Advanced Analytics** | Deep-dive metrics including seasonal trends and customer LTV distribution. |
+| **Feature Engineering** | Dynamic derivation of high-value metrics for business intelligence. |
+| **Self-Audit Loop** | Integrated verification nodes with automatic fallback repair mechanisms. |
+| **AI Insight Engine** | Generates strategic business recommendations using Groq-powered LLMs. |
 
 ---
 
-## 🏗️ Architecture Workflow
+## Architecture Workflow
 
 The system utilizes a directed acyclic graph (DAG) structure with specialized nodes, ensuring data undergoes rigorous transformation and validation.
 
@@ -62,7 +58,7 @@ graph TD
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Orchestration:** [LangGraph](https://python.langchain.com/docs/langgraph)
 - **Intelligence Engine:** LangChain Core & Groq API
@@ -72,7 +68,7 @@ graph TD
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Prerequisites
 - Python 3.9+
@@ -105,29 +101,25 @@ streamlit run streamlit_app.py
 
 ---
 
-## 👥 Meet the Team
+## Meet the Team
 
 <table align="center">
   <tr>
     <td align="center">
-      <img src="https://img.icons8.com/bubbles/100/000000/user-male.png" width="100px;" alt="Akash"/><br />
-      <sub><b>Akash</b></sub><br />
-      🚀 Lead Agent Architect
+      <b>Akash</b><br />
+      Lead Agent Architect
     </td>
     <td align="center">
-      <img src="https://img.icons8.com/bubbles/100/000000/user-male.png" width="100px;" alt="Venkatesh"/><br />
-      <sub><b>Venkatesh</b></sub><br />
-      ⚙️ Multi-Agent Engineer
+      <b>Venkatesh</b><br />
+      Multi-Agent Engineer
     </td>
     <td align="center">
-      <img src="https://img.icons8.com/bubbles/100/000000/user-male.png" width="100px;" alt="Samarth"/><br />
-      <sub><b>Samarth</b></sub><br />
-      🧠 Agent Logic Specialist
+      <b>Samarth</b><br />
+      Agent Logic Specialist
     </td>
     <td align="center">
-      <img src="https://img.icons8.com/bubbles/100/000000/user-male.png" width="100px;" alt="Rohan"/><br />
-      <sub><b>Rohan</b></sub><br />
-      🎨 AI Agent UX/UI Developer
+      <b>Rohan</b><br />
+      AI Agent UX/UI Developer
     </td>
   </tr>
 </table>
@@ -135,5 +127,5 @@ streamlit run streamlit_app.py
 ---
 
 <p align="center">
-  Built with ❤️ for the Agentathon Challenge
+  Built for the Agentathon Challenge
 </p>
