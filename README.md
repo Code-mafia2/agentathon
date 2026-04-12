@@ -1,35 +1,47 @@
-# RetailIQ Agent
+<p align="center">
+  <img src="assets/banner.png" alt="Agentathon Banner" width="100%">
+</p>
 
-RetailIQ Agent is an AI-powered automated data intelligence system designed to process, analyze, and extract insights from raw, noisy e-commerce order datasets. It operates as an autonomous agent utilizing a carefully crafted pipeline built on **LangGraph**. The system automatically handles data validation, cleaning, feature engineering, analytics, insight generation, and formatting to output clean, structured answers to business questions. 
+<h1 align="center">🚀 Agentathon: RetailIQ Intelligence</h1>
 
-## Features
-- **Validation**: Identifies critical issues in the provided raw dataset.
-- **Cleaning**: Automatically handles missing values, removes duplicates, and standardizes formats (e.g., currency).
-- **Feature Engineering**: Derives new metrics and features for advanced analysis.
-- **Analytics Engine**: Calculates key metrics, such as identifying top-performing products, seasonal trends, and high-value customer behaviors.
-- **Audit & Repair Loop**: Contains self-auditing steps with fallback mechanisms to ensure high validity of findings.
-- **AI-Powered Insights**: Synthesizes business recommendations from quantitative analytics using the LLM.
-- **Interactive UI**: A sleek Streamlit dashboard to interactively run the pipeline, explore the data, and review insights.
+<p align="center">
+  <strong>The Future of Autonomous Retail Data Intelligence</strong>
+</p>
 
-## Tech Stack
-- **Orchestration**: [LangGraph](https://python.langchain.com/docs/langgraph)
-- **Data Processing**: Pandas, NumPy
-- **LLM/AI Engine**: LangChain Core & Groq API
-- **User Interface**: Streamlit
-- **Environment Management**: Python-dotenv 
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/LangGraph-Autonomous-blue?style=for-the-badge&logo=chainlink&logoColor=white" alt="LangGraph">
+  <img src="https://img.shields.io/badge/AI_Engine-Groq-orange?style=for-the-badge&logo=fastapi&logoColor=white" alt="Groq">
+  <img src="https://img.shields.io/badge/UI-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
+  <img src="https://img.shields.io/github/license/Code-mafia2/agentathon?style=for-the-badge" alt="License">
+</p>
 
-## Architecture Workflow
+---
 
-The analysis process is implemented as a direct acyclic graph (with one conditional fallback edge), progressing through the following nodes:
+## 🌟 Overview
 
-1. **Validator Node (`validator_node`)**: Scans `raw_df` for missing categories, outlier prices, malformed dates, and logs issues into state.
-2. **Cleaner Node (`cleaner_node`)**: Prepares a cleaned dataset. Resolves parsing anomalies and deals with missing or dirty values in the dataset.
-3. **Feature Node (`feature_node`)**: Calculates derivative data, e.g., generating Year-Month combinations and parsing order values to float integers to aid further analytics computations.
-4. **Analytics Node (`analytics_node`)**: Answers core business queries (e.g., Top 5 Products, Weekly Sales trends, Customer LTV distribution) on the data using Pandas functions.
-5. **Auditor Node (`auditor_node`)**: Verifies the outputs of the analytics node. Ensures the answers are coherent and mathematically sound. If the auditor finds inconsistencies, it signals the pipeline to route to a fallback mechanism.
-6. **Analytics Repair / Fallback (`analytics_repair_node`)**: Fallback node triggered only if verification fails (`audit_status == "fail"`). Recalculates metrics more robustly.
-7. **Insight Node (`insight_node`)**: Feeds the computed analytics to the LLM (via GroqAPI) to formulate a qualitative, strategic business summary answering "What does this mean for the business?".
-8. **Formatter Node (`formatter_node`)**: Standardizes the final pipeline output combining both the analytical statistics and generated insights.
+**RetailIQ Agent** is a state-of-the-art AI-powered automated data intelligence system. Built for the modern e-commerce landscape, it processes, cleans, and extracts deep business insights from raw, noisy order datasets. 
+
+Operating as an autonomous agent orchestrated by **LangGraph**, the system manages a sophisticated pipeline from validation and feature engineering to self-auditing and qualitative insight generation.
+
+---
+
+## ✨ Core Features
+
+| Feature | Description |
+| :--- | :--- |
+| 🛡️ **Autonomous Validation** | Real-time identification of critical data integrity issues. |
+| 🧹 **Intelligent Cleaning** | Automated handling of missing values, duplicates, and currency standardization. |
+| 📊 **Advanced Analytics** | Deep-dive metrics including seasonal trends and customer LTV distribution. |
+| 🛠️ **Feature Engineering** | Dynamic derivation of high-value metrics for business intelligence. |
+| 🔄 **Self-Audit Loop** | Integrated verification nodes with automatic fallback repair mechanisms. |
+| 💡 **AI Insight Engine** | Generates strategic business recommendations using Groq-powered LLMs. |
+
+---
+
+## 🏗️ Architecture Workflow
+
+The system utilizes a directed acyclic graph (DAG) structure with specialized nodes, ensuring data undergoes rigorous transformation and validation.
 
 ```mermaid
 graph TD
@@ -42,43 +54,86 @@ graph TD
     G --> F
     F --> H[Formatter]
     H --> I((End))
+    
+    style E fill:#f9f,stroke:#333,stroke-width:2px
+    style G fill:#ff9,stroke:#333,stroke-width:2px
+    style I fill:#9f9,stroke:#333,stroke-width:2px
 ```
 
-## Quickstart
+---
 
-### Prerequisites
+## 🛠️ Tech Stack
+
+- **Orchestration:** [LangGraph](https://python.langchain.com/docs/langgraph)
+- **Intelligence Engine:** LangChain Core & Groq API
+- **Data Analysis:** Pandas, NumPy
+- **Dashboard:** Streamlit
+- **Environment:** Python-dotenv
+
+---
+
+## 🚀 Quick Start
+
+### 1. Prerequisites
 - Python 3.9+
-- A [Groq API Key](https://console.groq.com/keys)
+- [Groq API Key](https://console.groq.com/keys)
 
-### Setup
-1. Clone the repository and navigate into the `retailiq_agent` directory.
-2. Install the necessary dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Copy the `.env.example` file and configure your API key:
-   ```bash
-   cp .env.example .env
-   # Add your GROQ_API_KEY inside the .env file.
-   ```
-
-### Execution
-
-#### 1. CLI Execution
-Run the complete pipeline process via terminal on any compatible `.csv` dataset:
+### 2. Installation
 ```bash
-python main.py <path_to_csv_file> <optional_team_name>
+git clone https://github.com/Code-mafia2/agentathon.git
+cd agentathon
+pip install -r requirements.txt
 ```
 
-**Example:**
+### 3. Environment Setup
+Create a `.env` file from the example:
 ```bash
-python main.py test_data.csv team-alpha
+cp .env.example .env
+# Edit .env and add your GROQ_API_KEY
 ```
-*Results will be saved in the `output/` directory as `output/<team-name>.txt`.*
 
-#### 2. Streamlit Dashboard
-Launch the visual web interface to interactively query the dataset and see real-time updates of the LangGraph execution:
+### 4. Running the Agent
+**CLI Mode:**
+```bash
+python main.py train_data.csv team-alpha
+```
+
+**Dashboard Mode:**
 ```bash
 streamlit run streamlit_app.py
 ```
-This will open up a local server dashboard (typically on `http://localhost:8501`) that provides controls to run data analysis and view generated insights dynamically.
+
+---
+
+## 👥 Meet the Team
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="https://img.icons8.com/bubbles/100/000000/user-male.png" width="100px;" alt="Akash"/><br />
+      <sub><b>Akash</b></sub><br />
+      🚀 Lead Agent Architect
+    </td>
+    <td align="center">
+      <img src="https://img.icons8.com/bubbles/100/000000/user-male.png" width="100px;" alt="Venkatesh"/><br />
+      <sub><b>Venkatesh</b></sub><br />
+      ⚙️ Multi-Agent Engineer
+    </td>
+    <td align="center">
+      <img src="https://img.icons8.com/bubbles/100/000000/user-male.png" width="100px;" alt="Samarth"/><br />
+      <sub><b>Samarth</b></sub><br />
+      🧠 Agent Logic Specialist
+    </td>
+    <td align="center">
+      <img src="https://img.icons8.com/bubbles/100/000000/user-male.png" width="100px;" alt="Rohan"/><br />
+      <sub><b>Rohan</b></sub><br />
+      🎨 AI Agent UX/UI Developer
+    </td>
+  </tr>
+</table>
+
+---
+
+<p align="center">
+  Built with ❤️ for the Agentathon Challenge
+</p>
